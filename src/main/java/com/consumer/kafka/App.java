@@ -59,9 +59,11 @@ public class App {
         }
     }
 
+    //recordStr : {"name":"Audi","bidValue":"200","timestamp":"28 Nov 2019"}
     private static boolean store(String recordStr) {
         Gson gson = new Gson();
         Stock stock = gson.fromJson(recordStr, Stock.class);
+
         CassandraConnector client = new CassandraConnector();
         client.connect("localhost", 9042);
         session = client.getSession();
